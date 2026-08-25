@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Descargador Multimedia</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <main class="card">
+    <h1>Descargador Multimedia</h1>
+    <p class="subtitle">YouTube · TikTok · Instagram · X (Twitter)</p>
+
+    {% if not ffmpeg_ok %}
+    <div class="banner banner-warn">
+      ⚠️ No se detectó <code>ffmpeg</code> en el PATH. Es necesario para combinar video/audio y convertir
+      formatos de audio. Instálalo antes de descargar (ver README).
+    </div>
+    {% endif %}
+
+    <form id="download-form">
+      <label for="url">URL del contenido</label>
+      <input type="text" id="url" name="url" placeholder="https://..." autocomplete="off" required>
+      <div id="platform-badge" class="platform-badge hidden"></div>
+      <div id="url-error" class="field-error hidden"></div>
+
+      <label>Tipo de descarga</label>
+      <div class="mode-toggle">
+        <button type="button" class="mode-btn active" data-mode="video">Video</button>
+        <button type="button" class="mode-btn" data-mode="audio">Solo Audio</button>
+      </div>
+
+      <div id="video-options">
+        <label for="resolution">Resolución</label>
+        <select id="resolution" name="resolution">
+          {% for r in resolutions %}
+          <option value="{{ r }}" {% if r == '720p' %}selected{% endif %}>{{ r }}</option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <div id="audio-options" class="hidden">
+        <label for="audio-format">Formato de audio</label>
+        <select id="audio-format" name="audio-format">
+          {% for f in audio_formats %}
+          <option value="{{ f }}">{{ f|upper }}</option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <button type="submit" id="download-btn" class="download-btn">Descargar</button>
+    </form>
+
+    <div id="progress-wrap" class="progress-wrap hidden">
+      <div class="progress-bar"><div id="progress-fill" class="progress-fill"></div></div>
+      <div id="progress-label" class="progress-label">Preparando...</div>
+    </div>
+
+    <div id="result" class="result hidden"></div>
+  </main>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

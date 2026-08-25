@@ -1,0 +1,192 @@
+:root {
+  --bg: #0f1220;
+  --card: #171b2e;
+  --text: #eef0fb;
+  --muted: #9096b3;
+  --accent: #6c5ce7;
+  --accent-2: #00c2a8;
+  --error: #ff5c73;
+  --border: #2a2f4a;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at top, #1c2140, var(--bg));
+  color: var(--text);
+  font-family: "Segoe UI", system-ui, sans-serif;
+  padding: 24px;
+}
+
+.card {
+  width: 100%;
+  max-width: 460px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 32px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+}
+
+h1 {
+  margin: 0 0 4px;
+  font-size: 1.5rem;
+}
+
+.subtitle {
+  margin: 0 0 20px;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.banner {
+  padding: 10px 12px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  margin-bottom: 18px;
+}
+
+.banner-warn {
+  background: rgba(255, 196, 0, 0.12);
+  border: 1px solid rgba(255, 196, 0, 0.35);
+  color: #ffd876;
+}
+
+label {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin: 16px 0 6px;
+}
+
+input[type="text"], select {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: #10132200;
+  background-color: #0e1120;
+  color: var(--text);
+  font-size: 0.95rem;
+}
+
+input[type="text"]:focus, select:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.platform-badge {
+  margin-top: 8px;
+  display: inline-block;
+  font-size: 0.75rem;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: rgba(108, 92, 231, 0.18);
+  color: #b9aeff;
+}
+
+.field-error {
+  margin-top: 8px;
+  font-size: 0.8rem;
+  color: var(--error);
+}
+
+.mode-toggle {
+  display: flex;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.mode-btn {
+  flex: 1;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.15s ease;
+}
+
+.mode-btn.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: white;
+}
+
+.download-btn {
+  width: 100%;
+  margin-top: 24px;
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.download-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.progress-wrap {
+  margin-top: 20px;
+}
+
+.progress-bar {
+  height: 8px;
+  border-radius: 999px;
+  background: #0e1120;
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+
+.progress-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  transition: width 0.3s ease;
+}
+
+.progress-label {
+  margin-top: 8px;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.result {
+  margin-top: 20px;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+}
+
+.result.ok {
+  background: rgba(0, 194, 168, 0.12);
+  border: 1px solid rgba(0, 194, 168, 0.35);
+  color: #7ef2df;
+}
+
+.result.error {
+  background: rgba(255, 92, 115, 0.12);
+  border: 1px solid rgba(255, 92, 115, 0.35);
+  color: #ffb3bf;
+}
+
+.result a {
+  color: inherit;
+  font-weight: 600;
+}
+
+.hidden {
+  display: none !important;
+}
